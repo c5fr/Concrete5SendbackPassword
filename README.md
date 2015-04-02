@@ -1,9 +1,9 @@
-ZpartakovSendbackPassword, a package for Concrete5
+Concrete5SendbackPassword, a package for Concrete5
 ===================================================================
 
 French:
 
-ZpartakovSendbackPassword, un alternative lorsque le système de renvoi par mail des mots de passe
+Concrete5SendbackPassword, un alternative lorsque le système de renvoi par mail des mots de passe
 pour concrete5 ne fonctionne pas, qui force la création de mots de passe aléatoires.
 
 Pourquoi ce paquet?
@@ -28,16 +28,13 @@ Changements par zpartakov / zpartakov@akademia.ch
 4. Chercher le packet "Zpartakov Login".
 5. Cliquer sur le bouton "installer".
 
-Important: une fois le paquet installé, adapter (éditer):
-
-blocks/passwordreminder/view.php
-blocks/zpartakovlogin/view.php
+Important: une fois le paquet installé, modifier dans le dashboard "Passwordreminders"
 
 ===================================================================
 
 English:
 
-ZpartakovSendbackPassword, an alternative when core send password reminder within concrete5 is bugging, forcing random passwords.
+Concrete5SendbackPassword, an alternative when core send password reminder within concrete5 is bugging, forcing random passwords.
 
 Why this package?
 
@@ -62,26 +59,21 @@ Changes from zpartakov / zpartakov@akademia.ch
 
 Changes from zpartakov / zpartakov@akademia.ch
 
-Important: once the package installed, modify (edit) 
-
-blocks/passwordreminder/view.php
-blocks/zpartakovlogin/view.php
+Important: once the package installed, modify configs in the dashboard "Passwordreminders"
 
 ===================================================================
 
-ZpartakovSendbackPassword is distributed in the hope that it will be useful, 
+Concrete5SendbackPassword is distributed in the hope that it will be useful, 
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 /**
 *
-* @package ZpartakovSendbackPassword 1.0
+* @package Concrete5SendbackPassword 1.0
 * @author Zpartakov <zpartakov@akademia.ch>
 * @copyright (c) 2015 Zpartakov, radeff.net
 * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-* 
 * @required:
 * concrete5 Version 5.6.3.3
-* concrete5.6 login block http://www.concrete5.org/marketplace/addons/login_block/
 *
 */
