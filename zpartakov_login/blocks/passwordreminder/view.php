@@ -66,14 +66,19 @@ function passe_mnemo(){
 $u = new User();
 //display only of user is not registred
 if (!$u->isRegistered()){
+	$db = Loader::db();
+	$passwordreminders = $db->GetAll("SELECT formDescription FROM zpartakovloginconf");
+	$message=$passwordreminders[0]['formDescription'];
 ?>
-<h2><?php echo $pageTitle;?></h2>
-<p><?php echo $formDescription;?></p>
+<div onmouseover="document.getElementById('informations').style.display = 'block'" onmouseout="document.getElementById('informations').style.display = 'none';">
+<h2><?php echo t("Reset my password");?></h2>
 <p><?php echo t("Email");?></p>
 <form method="POST">
 <input type="text" name="email">
 <input type="submit">
 </form>
+<div style="display: none; margin-top: 1em; background-color: lightyellow; padding: 15px" id="informations"><?php echo $message; ?></div>
+</div>
 <?php
 }
 /*
@@ -104,97 +109,60 @@ $login=mysql_result($sql,0,'uName');
 $sql="UPDATE Users SET uPassword='".$hash ."' WHERE uEmail LIKE '".$_POST['email']."'";
 $sql=mysql_query($sql);
 
-/*
- * français (valeurs par défaut)
-* changer les valeurs selon vos besoins
-###############################################################################
-*/
 
-$webSiteName="YoupLaBoum, johndoe.org";
-$mailSender="John Doe <John.Doe@johndoe.org>"; //l'émetteur du mail
-$pageTitle="Mot de passe oublié?";
-$formDescription="Saisissez votre adresse e-mail ci-dessous. Nous vous enverrons les instructions pour vous connecter sur ce site et un nouveau mot de passe.";
-$sorryNoMatchingMail="<p>Désolé, ce mail n'est pas enregistré dans notre base de données. Merci de <a href=\"mailto:xxx@xxx.xx\">prendre contact avec un administrateur du site</a></p>";
-$connexionUrl="";//url pour la connexion des utilisateurs
-$Sujet = "Vos informations de connexion pour le site internet " .$webSiteName;
+  $sql="SELECT * FROM zpartakovloginconf LIMIT 0,1";
+  $sql=$db->getRow($sql);
 
-$bodyMail="Bonjour,
+$webSiteName=$sql['webSiteName'];
+$mailSender=$sql['mailSender'];
+$pageTitle=$sql['pageTitle'];
+$formDescription=$sql['formDescription'];;
+$sorryNoMatchingMail=$sql['sorryNoMatchingMail'];;
+$connexionUrl=$sql['connexionUrl'];
+$Sujet = $sql['Sujet'];
+$bodyMailBegin=$sql['bodyMailBegin'];
+$bodyMailEnd=$sql['bodyMailEnd'];
+$sendingMailFailed=$sql['sendingMailFailed'];
+$pleaseCheckYourMail=$sql['pleaseCheckYourMail'];
 
-Voici vos informations de connexion au site internet " .$webSiteName .":
+$bodyMail= $bodyMailBegin;
 
-identifiant: " .$login ."
-mot de passe: " .$password ."
+$bodyMail .="
+<br />" .t(login) .": " .$login;
 
-Pour vous connecter: <a href=\"".$connexionUrl."\">".$connexionUrl."</a>
+$bodyMail .="
+password: " .$password;
 
-En cas de problème de connexion, prenez contact avec <a href=\"mailto:".$mailSender."\">".$mailSender."</a>
-
-Meilleures salutations,
-".$webSiteName ."
-=======================
-Ceci est un message automatique envoyé par un robot depuis www.xxx
-";
-
-$sendingMailFailed="L'envoi du mail a échoué";
-$pleaseCheckYourMail="<div style=\"margin-top: 1em; padding: 1em; background-color: #FFFFC6\"><p>Veuillez consulter votre email " .$_POST['email'] .", vous aurez reçu vos informations de connexion.</p><p>Si vous ne le voyez pas, vérifiez que le mail ne soit pas passé dans les pourriels (spam)</p></div>";
-
-/*
- * Fin des modifications
-###############################################################################
-*/
-/*
- * english (activate by uncommenting following lines)
-change Values for your needs
-*/
-
-/*
- *
-$webSiteName="YoupLaBoum, johndoe.org";"
-$pageTitle="Forgotten password?";
-$formDescription="Fill this form with your email. This website will send you back a new secure random password.";
-$sorryNoMatchingMail="Sorry, this email is not in our database. Please <a href=\"mailto:xxx@xxx.xx\">contact an administrator of this website</a>.</p>";
-$Sujet = "Your connection infos for the website "" .$webSiteName;
-$bodyMail="Hello,
-
-Here are you informations for connecting to the internet website xxx:
-
-login: " .$login ."
-password: " .$password ."
-
-Connection: <a href=\"".$connexionUrl."\">".$connexionUrl."</a>
-
-In case of a connecion problem, please <a href=\"mailto:xxx@xxx.xx\">contact an administrator of this website</a>
-
-Best regards,
-
-=======================
-This is an automatic mail send by a robot from
-";
-$sendingMailFailed="Email sending failed";
-$pleaseCheckYourMail="<div style=\"margin-top: 1em; padding: 1em; background-color: #FFFFC6\"><p>xxxPlease read your email" .$_POST['email'] .", you have received your connection informations.</p><p>If you can't find it, please check that the email is not marked as spam.</p></div>";
-
-*/
-
-
-/*
- * end change values
-	###############################################################################
-*/
-
+$bodyMail =$bodyMail."<br /><br />".$bodyMailEnd;
 
 /*
  * sending the mail to the user
  * */
 
 $body=nl2br($bodyMail);
+
+/*
+echo "<hr>";
+echo "<br>".$Sujet ."<br>";
+echo $body;
+echo "<hr>";
+*/
+//exit;
+//echo $_POST['email']; exit;
 $From  = "From: " .$mailSender ."\n";
 $From .= "MIME-version: 1.0\n";
 $From .= "Content-type: text/html; charset= UTF-8\n";
  
+//$body="test";
+ 
 $envoie=mail($_POST['email'],$Sujet,$body,$From);
+//$envoie=mail('fradeff@akademia.ch',$Sujet,$body,$From);
 
 	if(!$envoie) { //problem sending mail
 		echo $sendingMailFailed; //feedback
+		$body="bug sending mail to : " .$_POST['email'];
+		$envoie=mail($From,"bug sending mail",$body,$_POST['email']);
+		
 	}
 	echo $pleaseCheckYourMail;
 }

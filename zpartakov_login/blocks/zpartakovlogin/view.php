@@ -1,33 +1,11 @@
 <?php 
 defined('C5_EXECUTE') or die(_("Access Denied."));
 
-/*
- * français (valeurs par défaut)
-* changer les valeurs selon vos besoins
-###############################################################################
-*/
-$nologin="<p style=\"font-size: smaller; font-style: italic\">Pas encore de login? Demandez à <a href=\"mailto:John.Doe@johndoe.org\">John.Doe@johndoe.org</a>";
-$send_me_a_newpassword="<br/><a href=\"/c5/connexion\">Se faire renvoyer un mot de passe</a>";	//url de la page sur laquelle vous avez installé le bloc passwordreminder
-
-
-/*
- * Fin des modifications, ne changez rien en-dessous à moins de savoir ce que vous faites
-###############################################################################
-*/
-/*
- * english (activate by uncommenting following lines)
-change Values for your needs
-*/
-
-/*
-$nologin="<p style=\"font-size: smaller; font-style: italic\">No login? Ask <a href=\"mailto:John.Doe@johndoe.org\">John.Doe@johndoe.org</a>";
-$send_me_a_newpassword="<br/><a href=\"/c5/connexion\">Se faire renvoyer un mot de passe</a>";	//url of the page where you'va activated the passwordreminder block
-*/
-
-/*
- * end change values, do not change anything below unless you know what you do
-	###############################################################################
-*/
+		  $db = Loader::db();
+		  $sql="SELECT * FROM zpartakovloginconf LIMIT 0,1";
+		  $sql=$db->getRow($sql);
+		  $nologin=$sql['nologin']; 
+		  $send_me_a_newpassword=$sql['send_me_a_newpassword'];
 
 $c = Page::getCurrentPage();
 $u = new User();

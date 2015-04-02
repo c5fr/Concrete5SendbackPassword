@@ -16,4 +16,24 @@
 			<default value="0"/>
 		</field>
 	</table>
+	<!-- configTable -->
+	<table name="zpartakovloginconf">
+		<field name="bID" type="I">
+			<key />
+			<unsigned />
+		</field>
+		<field name="nologin" type="X" ></field>
+		<field name="send_me_a_newpassword" type="X" ></field>
+		<field name="webSiteName" type="C" size="255" ></field>
+		<field name="mailSender" type="C" size="255" ></field>
+		<field name="pageTitle" type="C" size="255" ></field>
+		<field name="formDescription" type="X" ></field>
+		<field name="sorryNoMatchingMail" type="X" ></field>
+		<field name="Sujet" type="C" size="255" ></field>
+		<field name="bodyMailBegin" type="X" ></field>
+		<field name="bodyMailEnd" type="X" ></field>
+		<field name="sendingMailFailed" type="C" size="255" ></field>
+		<field name="pleaseCheckYourMail" type="X" ></field>
+	</table>
+
 </schema>

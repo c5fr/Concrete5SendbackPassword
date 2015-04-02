@@ -1,0 +1,111 @@
+# French translations for zpartakov_login package
+# Traductions françaises du paquet zpartakov_login.
+# Copyright (C) 2015 THE zpartakov_login'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the zpartakov_login package.
+# Automatically generated, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: zpartakov_login 1.0\n"
+"Report-Msgid-Bugs-To: zpartakov@akademia.ch\n"
+"POT-Creation-Date: 2015-04-01 15:04+0200\n"
+"PO-Revision-Date: 2015-04-01 15:04+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: zpartakov_login/controller.php:18
+msgid "Add a login box as a block and a modified random password email reminder."
+msgstr "Ajoute un formulaire d'enregistrement et un système de renvoi par courrier de nouveau mot de passe aléatoire"
+
+#: zpartakov_login/controller.php:22
+msgid "ZpartakovLogin"
+msgstr "ZpartakovLogin"
+
+#: zpartakov_login/blocks/zpartakovlogin/form_setup_html.php:13
+msgid "Show Register Link"
+msgstr "Montrer le lien d'enregistrement"
+
+#: zpartakov_login/blocks/zpartakovlogin/form_setup_html.php:19
+msgid "Be sure to enable Public Registration"
+msgstr "Assurez-vous d'avoir activé l'enregistrement public"
+
+#: zpartakov_login/blocks/zpartakovlogin/form_setup_html.php:24
+msgid "When login is complete, return users to this page."
+msgstr "Une fois l'utilisateur enregistré, rediriger sur cette page"
+
+#: zpartakov_login/blocks/zpartakovlogin/form_setup_html.php:29
+msgid "Hide login &amp; password fields if user is logged in."
+msgstr "Cacher le formulaire d'enregistrement si l'utilisateur est enregistré"
+
+#: zpartakov_login/blocks/zpartakovlogin/controller.php:14
+msgid "Lets you add a login box as a block."
+msgstr "Autorise de créer un formulaire d'enregistrement dans un bloc"
+
+#: zpartakov_login/blocks/zpartakovlogin/controller.php:18
+msgid "Login Box"
+msgstr "Formulaire d'enregistrement"
+
+#: zpartakov_login/blocks/zpartakovlogin/controller.php:22
+msgid "Register"
+msgstr "S'enregistrer"
+
+#: zpartakov_login/blocks/zpartakovlogin/controller.php:28
+#, php-format
+msgid "Click here to register %s"
+msgstr "Cliquer ici pour vous enregistrer sur %s"
+
+#: zpartakov_login/blocks/zpartakovlogin/view.php:22
+#, php-format
+msgid "Currently logged in as <b>%s</b>."
+msgstr "Enregistré comme <b>%s</b>."
+
+#: zpartakov_login/blocks/zpartakovlogin/view.php:22
+msgid "Sign Out"
+msgstr "Logout"
+
+#: zpartakov_login/blocks/zpartakovlogin/view.php:29
+msgid "Login"
+msgstr "Login"
+
+#: zpartakov_login/blocks/zpartakovlogin/view.php:33
+msgid "Email Address"
+msgstr "Adresse email"
+
+#: zpartakov_login/blocks/zpartakovlogin/view.php:35
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: zpartakov_login/blocks/zpartakovlogin/view.php:40
+msgid "Password"
+msgstr "Mot de passe"
+
+#: zpartakov_login/blocks/zpartakovlogin/view.php:45
+msgid "Sign In"
+msgstr "S'enregistrer"
+
+#: zpartakov_login/blocks/passwordreminder/view.php.01:77
+#: zpartakov_login/blocks/passwordreminder/view.php:71
+msgid "Email"
+msgstr "Email"
+
+#: zpartakov_login/blocks/passwordreminder/controller.php:6
+msgid "Passwordreminder, send a random password by email"
+msgstr "Passwordreminder, renvoi d'un mot de passe aléatoire par email"
+
+#: zpartakov_login/blocks/passwordreminder/controller.php:9
+msgid "PasswordReminder"
+msgstr "PasswordReminder"
+
+#: zpartakov_login/blocks/passwordreminder/view.php:70
+msgid "Reset my password"
+msgstr "Se faire renvoyer un mot de passe"
+
+#others
+msgid "Modify the options for the email sent by PasswordReminder"
+msgstr "Modifier les options pour le mail envoyé par PasswordReminder"
+
